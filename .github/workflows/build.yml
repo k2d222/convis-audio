@@ -29,10 +29,11 @@ jobs:
             build: pnpm build --target aarch64-apple-darwin
           - host: windows-latest
             target: aarch64-pc-windows-msvc
-          - host: ubuntu-latest
-            deps: sudo apt install -y libasound2-dev
-            target: aarch64-unknown-linux-gnu
-            flags: -x
+          # setting up alsa-sys is not working straight away with cross compilation.
+          # - host: ubuntu-latest
+          #   deps: sudo apt install -y libasound2-dev
+          #   target: aarch64-unknown-linux-gnu
+          #   flags: -x
     name: build target ${{ matrix.cfg.target }}
     runs-on: ${{ matrix.cfg.host }}
     steps:
