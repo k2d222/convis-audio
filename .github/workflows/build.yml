@@ -4,8 +4,7 @@ env:
   APP_NAME: '@convis/audio'
   MACOSX_DEPLOYMENT_TARGET: '10.13'
   CARGO_INCREMENTAL: '1'
-permissions: {} # doesn't need any permission.
-on: workflow-dispatch # triggered manually in GitHub
+on: workflow_dispatch # triggered manually in GitHub
 
 # this creates a concurrency group, and will cancel in-progress jobs when pushing to the same branch.
 concurrency:
@@ -17,21 +16,26 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        - host: macos-latest
-          target: x86_64-apple-darwin
-        - host: windows-latest
-          target: x86_64-pc-windows-msvc
-        - host: ubuntu-latest
-          target: x86_64-unknown-linux-gnu
-        - host: macos-latest
-          target: aarch64-apple-darwin
-          build: pnpm build --target aarch64-apple-darwin
-        - host: windows-latest
-          target: aarch64-pc-windows-msvc
-        - host: ubuntu-latest
-          target: aarch64-unknown-linux-gnu
-    name: build target ${{ matrix.target }}
-    runs-on: ${{ matrix.host }}
+        cfg:
+          - host: macos-latest
+            target: x86_64-apple-darwin
+          - host: windows-latest
+            target: x86_64-pc-windows-msvc
+          - host: ubuntu-latest
+            deps: sudo apt install -y libasound2-dev
+            target: x86_64-unknown-linux-gnu
+          - host: macos-latest
+            target: aarch64-apple-darwin
+            build: pnpm build --target aarch64-apple-darwin
+          - host: windows-latest
+            target: aarch64-pc-windows-msvc
+          # GitHub doesn't have a runner for aarch64, but we don't really need it.
+          # We could easily cross-compile from x64 if needed.
+          # - host: ubuntu-latest
+          #   deps: sudo apt install -y libasound2-dev
+          #   target: aarch64-unknown-linux-gnu
+    name: build target ${{ matrix.cfg.target }}
+    runs-on: ${{ matrix.cfg.host }}
     steps:
       - uses: actions/checkout@v6
       - name: setup pnpm
@@ -41,30 +45,23 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
+      - name: Install OS dependencies
+        if: ${{ matrix.cfg.deps }}
+        run: ${{ matrix.cfg.deps }}
+        shell: bash
       - name: Install
         uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
-          targets: ${{ matrix.target }}
-      # - name: Cache cargo
-      #   uses: actions/cache@v5
-      #   with:
-      #     path: |
-      #       ~/.cargo/registry/index/
-      #       ~/.cargo/registry/cache/
-      #       ~/.cargo/git/db/
-      #       ~/.napi-rs
-      #       .cargo-cache
-      #       target/
-      #     key: ${{ matrix.target }}-cargo-${{ matrix.host }}
+          targets: ${{ matrix.cfg.target }}
       - name: Install dependencies
         run: pnpm install
       - name: Build
-        run: pnpm run napi build --platform --release --target ${{ matrix.build }}
+        run: pnpm napi build --platform --release --target ${{ matrix.cfg.target }}
         shell: bash
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
           path: '*.node'
-          name: audio-{{ matrix.target }}.node
+          name: audio-${{ matrix.cfg.target }}.node
           if-no-files-found: error

@@ -41,5 +41,6 @@
 			"aarch64-pc-windows-msvc",
 			"aarch64-apple-darwin"
 		]
-	}
+	},
+	"packageManager": "pnpm@10.33.3"
 }
