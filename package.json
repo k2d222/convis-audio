@@ -1,12 +1,12 @@
 {
-	"name": "@convis/audio",
+	"name": "@convis/audio-native",
 	"version": "0.0.1",
-	"description": "Audio module for Convisation",
-	"homepage": "https://github.com/k2d222/convis",
-	"bugs": "https://github.com/k2d222/convis/issues",
+	"description": "Native Node (N-API) module for @convis/audio",
+	"homepage": "https://github.com/k2d222/convis-audio",
+	"bugs": "https://github.com/k2d222/convis-audio/issues",
 	"license": "MIT",
 	"author": "Mathis Brossier <mathis.brossier@gmail.com>",
-	"repository": "github:k2d222/convis",
+	"repository": "github:k2d222/convis-audio",
 	"files": [
 		"./dist/*",
 		"./src/*"
