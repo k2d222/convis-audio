@@ -12,7 +12,7 @@
 		"./dist/index.js",
 		"./src/*"
 	],
-	"type": "module",
+	"type": "commonjs",
 	"exports": {
 		"types": "./dist/index.d.ts",
 		"node": "./dist/index.js"
