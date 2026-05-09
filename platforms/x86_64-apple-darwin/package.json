@@ -1,0 +1,14 @@
+{
+	"name": "@convis/audio-aarch64-apple-darwin",
+	"version": "0.0.1",
+	"cpu": [
+		"arm64"
+	],
+	"main": "audio.aarch64-apple-darwin.node",
+	"files": [
+		"audio.aarch64-apple-darwin.node"
+	],
+	"os": [
+		"darwin"
+	]
+}

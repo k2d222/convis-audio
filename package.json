@@ -18,13 +18,9 @@
 	},
 	"scripts": {
 		"build": "rm -rf dist/ && pnpm run napi:build:release",
-		"build:all": "rm -rf dist/ && pnpm run '/^napi:build:target-.*/'",
 		"dev": "pnpm napi:build:debug --watch",
 		"napi:build:debug": "napi build --platform -o dist/",
-		"napi:build:release": "napi build --platform --release --strip -o dist/",
-		"napi:build:target-linux-x64-gnu": "pnpm napi:build:release  --cross-compile --target x86_64-unknown-linux-gnu && cp dist/audio.linux-x64-gnu.node platforms/linux-x64-gnu",
-		"napi:build:target-win32-x64-msvc": "pnpm napi:build:release --cross-compile --target x86_64-pc-windows-msvc && cp dist/audio.win32-x64-msvc.node platforms/win32-x64-msvc",
-		"napi:build:target-darwin-arm64": "pnpm napi:build:release --cross-compile --target aarch64-apple-darwin && cp dist/audio.darwin-arm64.node platforms/darwin-arm64"
+		"napi:build:release": "napi build --platform --release --strip -o dist/"
 	},
 	"devDependencies": {
 		"@napi-rs/cli": "^3.2.0"
@@ -40,6 +36,9 @@
 		"targets": [
 			"x86_64-unknown-linux-gnu",
 			"x86_64-pc-windows-msvc",
+			"x86_64-apple-darwin",
+			"aarch64-unknown-linux-gnu",
+			"aarch64-pc-windows-msvc",
 			"aarch64-apple-darwin"
 		]
 	}

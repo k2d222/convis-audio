@@ -1,0 +1,17 @@
+{
+	"name": "@convis/audio-x86_64-unknown-linux-gnu",
+	"version": "0.0.1",
+	"cpu": [
+		"x64"
+	],
+	"main": "audio.x86_64-unknown-linux-gnu.node",
+	"files": [
+		"audio.x86_64-unknown-linux-gnu.node"
+	],
+	"os": [
+		"linux"
+	],
+	"libc": [
+		"glibc"
+	]
+}
