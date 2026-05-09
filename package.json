@@ -20,18 +20,20 @@
 		"build": "rm -rf dist/ && pnpm run napi:build:release",
 		"dev": "pnpm napi:build:debug --watch",
 		"napi:build:debug": "napi build --platform -o dist/",
-		"napi:build:release": "napi build --platform --release --strip -o dist/"
+		"napi:build:release": "napi build --platform --release --strip -o dist/",
+		"download-artifacts": "sh scripts/download-artifacts.sh"
 	},
 	"devDependencies": {
-		"@napi-rs/cli": "^3.2.0"
+		"@napi-rs/cli": "^3.2.0",
+		"@types/node": "^25.6.2"
 	},
 	"optionalDependencies": {
-		"@convis/audio-x86_64-unknown-linux-gnu": "workspace:*",
-		"@convis/audio-x86_64-pc-windows-msvc": "workspace:*",
-		"@convis/audio-x86_64-apple-darwin": "workspace:*",
-		"@convis/audio-aarch64-unknown-linux-gnu": "workspace:*",
+		"@convis/audio-aarch64-apple-darwin": "workspace:*",
 		"@convis/audio-aarch64-pc-windows-msvc": "workspace:*",
-		"@convis/audio-aarch64-apple-darwin": "workspace:*"
+		"@convis/audio-aarch64-unknown-linux-gnu": "workspace:*",
+		"@convis/audio-x86_64-apple-darwin": "workspace:*",
+		"@convis/audio-x86_64-pc-windows-msvc": "workspace:*",
+		"@convis/audio-x86_64-unknown-linux-gnu": "workspace:*"
 	},
 	"napi": {
 		"npmClient": "pnpm",
