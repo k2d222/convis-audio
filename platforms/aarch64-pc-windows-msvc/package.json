@@ -1,12 +1,12 @@
 {
-	"name": "@convis/audio-x86_64-pc-windows-msvc",
+	"name": "@convis/audio-aarch64-pc-windows-msvc",
 	"version": "0.0.1",
 	"cpu": [
-		"x64"
+		"arm64"
 	],
-	"main": "audio.x86_64-pc-windows-msvc.node",
+	"main": "audio.aarch64-pc-windows-msvc.node",
 	"files": [
-		"audio.x86_64-pc-windows-msvc.node"
+		"audio.aarch64-pc-windows-msvc.node"
 	],
 	"os": [
 		"win32"

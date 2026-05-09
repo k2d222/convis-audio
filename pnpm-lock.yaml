@@ -12,21 +12,36 @@ importers:
         specifier: ^3.2.0
         version: 3.6.2(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)
     optionalDependencies:
-      '@convis/audio-darwin-arm64':
+      '@convis/audio-aarch64-apple-darwin':
         specifier: workspace:*
-        version: link:platforms/darwin-arm64
-      '@convis/audio-linux-x64-gnu':
+        version: link:platforms/aarch64-apple-darwin
+      '@convis/audio-aarch64-pc-windows-msvc':
         specifier: workspace:*
-        version: link:platforms/linux-x64-gnu
-      '@convis/audio-win32-x64-msvc':
+        version: link:platforms/aarch64-pc-windows-msvc
+      '@convis/audio-aarch64-unknown-linux-gnu':
         specifier: workspace:*
-        version: link:platforms/win32-x64-msvc
+        version: link:platforms/aarch64-unknown-linux-gnu
+      '@convis/audio-x86_64-apple-darwin':
+        specifier: workspace:*
+        version: link:platforms/x86_64-apple-darwin
+      '@convis/audio-x86_64-pc-windows-msvc':
+        specifier: workspace:*
+        version: link:platforms/x86_64-pc-windows-msvc
+      '@convis/audio-x86_64-unknown-linux-gnu':
+        specifier: workspace:*
+        version: link:platforms/x86_64-unknown-linux-gnu
 
-  platforms/darwin-arm64: {}
+  platforms/aarch64-apple-darwin: {}
 
-  platforms/linux-x64-gnu: {}
+  platforms/aarch64-pc-windows-msvc: {}
 
-  platforms/win32-x64-msvc: {}
+  platforms/aarch64-unknown-linux-gnu: {}
+
+  platforms/x86_64-apple-darwin: {}
+
+  platforms/x86_64-pc-windows-msvc: {}
+
+  platforms/x86_64-unknown-linux-gnu: {}
 
 packages:
 

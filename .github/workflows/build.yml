@@ -29,22 +29,21 @@ jobs:
             build: pnpm build --target aarch64-apple-darwin
           - host: windows-latest
             target: aarch64-pc-windows-msvc
-          # GitHub doesn't have a runner for aarch64, but we don't really need it.
-          # We could easily cross-compile from x64 if needed.
-          # - host: ubuntu-latest
-          #   deps: sudo apt install -y libasound2-dev
-          #   target: aarch64-unknown-linux-gnu
+          - host: ubuntu-latest
+            deps: sudo apt install -y libasound2-dev
+            target: aarch64-unknown-linux-gnu
+            flags: -x
     name: build target ${{ matrix.cfg.target }}
     runs-on: ${{ matrix.cfg.host }}
     steps:
       - uses: actions/checkout@v6
-      - name: setup pnpm
-        uses: pnpm/action-setup@v6
-      - name: Setup node
-        uses: actions/setup-node@v6
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
         with:
           node-version: 22
           cache: pnpm
+      - uses: mlugg/setup-zig@v2 # need zig for cargo-zigbuild for cross-compilation
+        if: matrix.cfg.target == 'aarch64-unknown-linux-gnu'
       - name: Install OS dependencies
         if: ${{ matrix.cfg.deps }}
         run: ${{ matrix.cfg.deps }}
@@ -54,10 +53,10 @@ jobs:
         with:
           toolchain: stable
           targets: ${{ matrix.cfg.target }}
-      - name: Install dependencies
+      - name: Install npm dependencies
         run: pnpm install
       - name: Build
-        run: pnpm napi build --platform --release --target ${{ matrix.cfg.target }}
+        run: pnpm napi build --platform --release --target ${{ matrix.cfg.target }} ${{ matrix.cfg.flags }}
         shell: bash
       - name: Upload artifact
         uses: actions/upload-artifact@v7

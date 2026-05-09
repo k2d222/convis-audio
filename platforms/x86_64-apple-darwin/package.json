@@ -1,12 +1,12 @@
 {
-	"name": "@convis/audio-aarch64-apple-darwin",
+	"name": "@convis/audio-x86_64-apple-darwin",
 	"version": "0.0.1",
 	"cpu": [
-		"arm64"
+		"x64"
 	],
-	"main": "audio.aarch64-apple-darwin.node",
+	"main": "audio.x86_64-apple-darwin.node",
 	"files": [
-		"audio.aarch64-apple-darwin.node"
+		"audio.x86_64-apple-darwin.node"
 	],
 	"os": [
 		"darwin"
