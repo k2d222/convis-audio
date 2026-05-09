@@ -22,7 +22,8 @@
 		"dev": "pnpm napi:build:debug --watch",
 		"napi:build:debug": "napi build -o dist/",
 		"napi:build:release": "napi build -o dist/ --release --strip",
-		"download-artifacts": "sh scripts/download-artifacts.sh"
+		"script:download-artifacts": "sh scripts/download-artifacts.sh",
+		"script:version": "sh scripts/version.sh"
 	},
 	"devDependencies": {
 		"@napi-rs/cli": "^3.2.0",
