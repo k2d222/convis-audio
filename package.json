@@ -1,0 +1,46 @@
+{
+	"name": "@convis/audio",
+	"version": "0.0.1",
+	"description": "Audio module for Convisation",
+	"homepage": "https://github.com/k2d222/convis",
+	"bugs": "https://github.com/k2d222/convis/issues",
+	"license": "MIT",
+	"author": "Mathis Brossier <mathis.brossier@gmail.com>",
+	"repository": "github:k2d222/convis",
+	"files": [
+		"./dist/*",
+		"./src/*"
+	],
+	"type": "module",
+	"exports": {
+		"types": "./dist/index.d.ts",
+		"node": "./dist/index.js"
+	},
+	"scripts": {
+		"build": "rm -rf dist/ && pnpm run napi:build:release",
+		"build:all": "rm -rf dist/ && pnpm run '/^napi:build:target-.*/'",
+		"dev": "pnpm napi:build:debug --watch",
+		"napi:build:debug": "napi build --platform -o dist/",
+		"napi:build:release": "napi build --platform --release --strip -o dist/",
+		"napi:build:target-linux-x64-gnu": "pnpm napi:build:release  --cross-compile --target x86_64-unknown-linux-gnu && cp dist/audio.linux-x64-gnu.node platforms/linux-x64-gnu",
+		"napi:build:target-win32-x64-msvc": "pnpm napi:build:release --cross-compile --target x86_64-pc-windows-msvc && cp dist/audio.win32-x64-msvc.node platforms/win32-x64-msvc",
+		"napi:build:target-darwin-arm64": "pnpm napi:build:release --cross-compile --target aarch64-apple-darwin && cp dist/audio.darwin-arm64.node platforms/darwin-arm64"
+	},
+	"devDependencies": {
+		"@napi-rs/cli": "^3.2.0"
+	},
+	"optionalDependencies": {
+		"@convis/audio-darwin-arm64": "workspace:*",
+		"@convis/audio-linux-x64-gnu": "workspace:*",
+		"@convis/audio-win32-x64-msvc": "workspace:*"
+	},
+	"napi": {
+		"npmClient": "pnpm",
+		"binaryName": "audio",
+		"targets": [
+			"x86_64-unknown-linux-gnu",
+			"x86_64-pc-windows-msvc",
+			"aarch64-apple-darwin"
+		]
+	}
+}

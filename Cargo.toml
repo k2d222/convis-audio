@@ -1,0 +1,23 @@
+
+[package]
+edition = "2021"
+name = "audio"
+version = "0.0.1"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+anyhow = "1.0.102"
+cpal = "0.17.3"
+napi = { version = "3.0.0", features = ["anyhow"] }
+napi-derive = "3.0.0"
+ringbuf = "0.5.0"
+sonora = "0.1.0"
+
+[build-dependencies]
+napi-build = "2"
+
+[profile.release]
+lto = true
+strip = "symbols"

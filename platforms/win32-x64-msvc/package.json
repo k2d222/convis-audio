@@ -1,0 +1,14 @@
+{
+  "name": "@convis/audio-win32-x64-msvc",
+  "version": "0.0.1",
+  "cpu": [
+    "x64"
+  ],
+  "main": "audio.win32-x64-msvc.node",
+  "files": [
+    "audio.win32-x64-msvc.node"
+  ],
+  "os": [
+    "win32"
+  ]
+}
