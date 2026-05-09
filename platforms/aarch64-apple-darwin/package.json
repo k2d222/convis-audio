@@ -1,6 +1,6 @@
 {
 	"name": "@convis/audio-aarch64-apple-darwin",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"cpu": [
 		"arm64"
 	],

@@ -1,6 +1,6 @@
 {
 	"name": "@convis/audio-native",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "Native Node (N-API) module for @convis/audio",
 	"homepage": "https://github.com/k2d222/convis-audio",
 	"bugs": "https://github.com/k2d222/convis-audio/issues",
