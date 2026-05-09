@@ -15,4 +15,4 @@ napi-rs compiles Rust and generates 3 files in `dist/`: `audio.<local target>.no
 * When completed: `pnpm download-artifacts`
 * Check that the `.node` files were copied to `platforms/<target>/audio-<target>.node`
 * Bump package versions and commit
-* `pnpm publish`
+* `pnpm publish -r`

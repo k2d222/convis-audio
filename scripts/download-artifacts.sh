@@ -4,7 +4,7 @@
 
 
 # download all artifacts. They go each in one directory.
-gh run download -p '*'
+gh run download $1 -p '*'
 
 # move the artifact into the platforms/ dir and delete the artifact directory.
 for dir in audio-*.node/; do
