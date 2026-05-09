@@ -19,8 +19,8 @@
 	"scripts": {
 		"build": "rm -rf dist/ && pnpm run napi:build:release",
 		"dev": "pnpm napi:build:debug --watch",
-		"napi:build:debug": "napi build --platform -o dist/",
-		"napi:build:release": "napi build --platform --release --strip -o dist/",
+		"napi:build:debug": "napi build -o dist/",
+		"napi:build:release": "napi build --release --strip -o dist/",
 		"download-artifacts": "sh scripts/download-artifacts.sh"
 	},
 	"devDependencies": {

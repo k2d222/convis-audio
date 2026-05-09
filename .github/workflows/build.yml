@@ -62,7 +62,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
-          path: '*.node'
-          archive: false
+          path: 'audio.node'
           name: audio-${{ matrix.cfg.target }}.node
           if-no-files-found: error

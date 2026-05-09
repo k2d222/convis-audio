@@ -9,17 +9,10 @@ napi-rs compiles Rust and generates 3 files in `dist/`: `audio.<local target>.no
 * `index.js` is the glue code to import the `.node` file. It finds it either in the same directory, or in one of the precompiled modules.
 * `index.d.ts` contains automatically-generated typings for the exported Rust methods and structs.
 
-## Cross-compilation (`pnpm build` in current folder)
+## Releases
 
-This script regenerates the precompiled modules in `platforms/`.
-
-Install Rust and the target toolchains:
-- `rustup target add x86_64-unknwown-linux-gnu`
-- `rustup target add x86_64-pc-windows-msvc`
-- `rustup target add aarch64-apple-darwin`
-
-Then run `pnpm build`. It will compile all targets and move the `.node` file in the right `plaforms/` module.
-
-## macOS
-
-Currently cross-compilation to macOS does not seem to work. It seems to require Xcode.
+* Trigger the GitHub workflow here: <https://github.com/k2d222/convis-audio/actions/workflows/build.yml>
+* When completed: `pnpm download-artifacts`
+* Check that the `.node` files were copied to `platforms/<target>/audio-<target>.node`
+* Bump package versions and commit
+* `pnpm publish`
