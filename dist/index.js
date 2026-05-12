@@ -8,8 +8,11 @@ const loadErrors = [];
 function requireNative() {
 	try {
 		// the locally-build module overrides all others. (generated in dev mode)
-		return require("./audio.node");
+		const module = require("./audio.node");
+		console.log("!! Running @convis/audio-native in dev mode.");
+		return module;
 	} catch (e) {
+		console.error(e);
 		loadErrors.push(e);
 	}
 	if (process.env.NAPI_RS_NATIVE_LIBRARY_PATH) {

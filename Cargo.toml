@@ -21,3 +21,6 @@ napi-build = "2"
 [profile.release]
 lto = true
 strip = "symbols"
+
+[patch.crates-io]
+sonora = { git = "https://github.com/dignifiedquire/sonora", rev = "aacadf0ba1943d28bbde86f9ae507c4be25be243" }
