@@ -22,7 +22,7 @@ use sonora::AudioProcessing;
 const SAMPLE_RATE: u32 = 24_000;
 const NUM_CHANNELS: u16 = 1;
 const FRAME_SIZE: usize = (SAMPLE_RATE / 100) as usize; // 10 ms
-const RING_SIZE: usize = FRAME_SIZE * 1024;
+const RING_SIZE: usize = FRAME_SIZE * 10000; // number of frames to store in the buffer. Corresponds to 100s of audio.
 
 #[napi]
 pub struct AudioHardware {
