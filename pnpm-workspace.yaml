@@ -1,2 +1,4 @@
 packages:
   - 'platforms/*'
+  # not built yet (alsa-sys cross-compilation), see publish.yml
+  - '!platforms/aarch64-unknown-linux-gnu'

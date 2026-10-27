@@ -8,9 +8,8 @@ gh run download $1 -p '*'
 
 # move the artifact into the platforms/ dir and delete the artifact directory.
 for dir in audio.*.node/; do
-  triplet="${dir%.node/}"           # audio-<triplet>.node
-  triplet="${triplet#audio.}"   # <triplet>.node
-  triplet="${triplet%.node}"      # triplet
+  triplet="${dir%.node/}"       # audio.<triplet>
+  triplet="${triplet#audio.}"   # <triplet>
 
   src="$dir/audio.node"
   dst="platforms/$triplet/audio.$triplet.node"
