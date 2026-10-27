@@ -11,6 +11,12 @@ export declare class AudioHardware {
   openOutputStream(cfg: StreamConfig): void
   openInputStream(cfg: StreamConfig): void
   write(pcm: Float32Array): void
+  /**
+   * Sets the output channels the audio is played on: "mono" (all channels), "left" or
+   * "right". It applies to the current and future output streams, and is ignored by mono
+   * devices.
+   */
+  setOutputChannel(channel: string): void
   setInputCallback(cb: ((err: Error | null, arg: Float32Array) => any)): void
 }
 
