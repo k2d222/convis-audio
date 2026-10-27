@@ -1,6 +1,6 @@
 {
 	"name": "@convis/audio-native",
-	"version": "0.0.8-rc1",
+	"version": "0.0.8-rc2",
 	"description": "Native Node (N-API) module for @convis/audio",
 	"homepage": "https://github.com/k2d222/convis-audio",
 	"bugs": "https://github.com/k2d222/convis-audio/issues",
@@ -51,5 +51,5 @@
 			"aarch64-apple-darwin"
 		]
 	},
-	"packageManager": "pnpm@12.15.0"
+	"packageManager": "pnpm@11.28.9"
 }
